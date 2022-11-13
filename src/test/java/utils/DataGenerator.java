@@ -1,8 +1,8 @@
-package Utils;
+package utils;
 
 import java.util.Locale;
 
-import Entities.RegistrationDto;
+import entities.RegistrationDto;
 import com.github.javafaker.Faker;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;

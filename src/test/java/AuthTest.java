@@ -1,4 +1,4 @@
-import Utils.DataGenerator;
+import utils.DataGenerator;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeEach;
@@ -45,8 +45,8 @@ public class AuthTest {
   @Test
   void shouldAddNoValidateUserAndAuthTest() {
     var user = DataGenerator.Registration.getRegisteredUser("active");
-
-    login("noValidateName", user.getPassword());
+    var wrongLogin = DataGenerator.getRandomLogin();
+    login(wrongLogin, user.getPassword());
 
     $(".notification .notification__content")
         .shouldHave(Condition.text("Неверно указан логин или пароль"))
@@ -56,8 +56,8 @@ public class AuthTest {
   @Test
   void shouldAddNoValidatePasswordAndAuthTest() {
     var registeredUser = DataGenerator.Registration.getRegisteredUser("active");
-
-    login(registeredUser.getLogin(), "noValidatePassword");
+    var wrongPassword = DataGenerator.getRandomPassword();
+    login(registeredUser.getLogin(), wrongPassword);
 
     $(".notification .notification__content")
         .shouldHave(Condition.text("Неверно указан логин или пароль"))
